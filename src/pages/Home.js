@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import Map from "../components/Map";
 
 const Home = () => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    // Obtener productos desde el backend
+    fetch("http://localhost:8080/productos")
+      .then((response) => response.json())
+      .then((data) => setProductos(data))
+      .catch((error) => console.error("Error al cargar productos:", error));
+  }, []);
+
   return (
     <div>
-      <h2>Bienvenido a MarketMap</h2>
-      <p>¡Aquí puedes publicar productos y explorar el mapa!</p>
+      <h1>Mapa de Productos</h1>
+      <Map productos={productos} />
     </div>
   );
 };

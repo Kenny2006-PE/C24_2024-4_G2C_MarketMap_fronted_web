@@ -1,0 +1,26 @@
+#map {
+    height: 70vh; /* Ajustar el mapa al 70% del alto de la ventana */
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+  }
+  
+  .leaflet-popup-content img {
+    border-radius: 10px;
+    margin: 10px auto;
+    display: block;
+    max-width: 90px;
+    height: auto;
+  }
+  
+  .leaflet-popup-content {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+  }
+  
+  .leaflet-container {
+    background-color: #f4f4f4; /* Fondo del mapa mientras se carga */
+  }
+  
