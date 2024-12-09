@@ -1,0 +1,23 @@
+.footer-container {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: #fff;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    margin-top: auto;
+  }
+  
+  .footer-content p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+  
+  .footer-content a {
+    color: #ffc107;
+    text-decoration: none;
+  }
+  
+  .footer-content a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  

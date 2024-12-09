@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Map from "../components/Map";
-
+import Footer from "../components/Footer";
 const Home = () => {
   const [productos, setProductos] = useState([]);
 
@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Mapa de Productos</h1>
+      
       <Map productos={productos} />
     </div>
   );

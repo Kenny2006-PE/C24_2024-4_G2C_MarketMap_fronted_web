@@ -27,14 +27,17 @@ const Map = ({ productos }) => {
         const marker = L.marker([producto.latitud, producto.longitud], { icon }).addTo(map);
 
         marker.bindPopup(`
-          <div style="text-align: center;">
-            <img src="${producto.imagen_url}" alt="${producto.nombre}" style="width: 100px; height: auto; margin-bottom: 5px;" />
-            <br />
-            <strong>${producto.nombre}</strong>
-            <br />
-            ${producto.descripcion || ""}
-          </div>
-        `);
+            <div style="text-align: center;">
+              <img src="${producto.imagen_url}" alt="${producto.nombre}" style="width: 100px; height: auto; margin-bottom: 5px;" />
+              <br />
+              <strong>${producto.nombre}</strong>
+              <br />
+              ${producto.descripcion || ""}
+              <br />
+              <a href="/producto/${producto.id}" class="btn btn-primary btn-sm mt-2">Ver más</a>
+            </div>
+          `);
+          
       }
     });
 
