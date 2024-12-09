@@ -3,19 +3,25 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import ProductoForm from "./components/ProductoForm";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ProductDetails from "./components/ProductDetails";
 import Footer from "./components/Footer";
-import ProductDetails from './components/ProductDetails';
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
     <Router>
       <Navbar />
-      
       <Routes>
+        {/* Rutas principales */}
         <Route path="/" element={<Home />} />
         <Route path="/publicar-producto" element={<ProductoForm />} />
         <Route path="/producto/:id" element={<ProductDetails />} />
+        
+        {/* Rutas de autenticación */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <Footer />
     </Router>
