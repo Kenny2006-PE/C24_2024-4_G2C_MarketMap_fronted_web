@@ -50,10 +50,12 @@ const ProductoForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
     if (!latitud || !longitud || !imagenUrl) {
       alert("Faltan datos requeridos.");
       return;
     }
+  
     const producto = {
       nombre,
       descripcion,
@@ -62,15 +64,27 @@ const ProductoForm = () => {
       imagen_url: imagenUrl,
       latitud,
       longitud,
-      vendedor_id: 1,
     };
+  
     try {
-      await axios.post("http://localhost:8080/productos", producto);
+      const token = localStorage.getItem("token"); // Obtener el token del almacenamiento local
+      if (!token) {
+        alert("Usuario no autenticado.");
+        return;
+      }
+  
+      const headers = {
+        Authorization: `Bearer ${token}`, // Incluir el token en el encabezado de la solicitud
+      };
+  
+      await axios.post("http://localhost:8080/productos", producto, { headers });
       alert("Producto publicado.");
-    } catch {
+    } catch (error) {
+      console.error("Error al publicar el producto:", error);
       alert("Error al publicar el producto.");
     }
   };
+  
 
   return (
     <div className="container mt-5">
