@@ -14,12 +14,9 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-        {/* Rutas principales */}
         <Route path="/" element={<Home />} />
         <Route path="/publicar-producto" element={<ProductoForm />} />
         <Route path="/producto/:id" element={<ProductDetails />} />
-        
-        {/* Rutas de autenticación */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

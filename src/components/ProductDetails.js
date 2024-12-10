@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import L from 'leaflet';
+import "./ProductoForm.css";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -9,16 +10,25 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!id) {
+      console.error('El ID no está presente en la URL.');
+      alert('No se encontró el ID del producto.');
+      return;
+    }
+
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/productos/${id}`);
+        const token = localStorage.getItem('token');
+        const headers = token ? { Authorization: `Bearer ${token}` } : {};
+        const response = await axios.get(`http://localhost:8080/productos/${id}`, { headers });
+
         if (response.status === 200) {
           setProduct(response.data);
         } else {
-          console.error('Producto no encontrado.');
+          console.error('Producto no encontrado. Status:', response.status);
         }
       } catch (error) {
-        console.error('Error fetching product details:', error);
+        console.error('Error fetching product details:', error.message);
         alert('Hubo un problema al cargar la información del producto.');
       } finally {
         setLoading(false);
@@ -30,62 +40,27 @@ const ProductDetails = () => {
   useEffect(() => {
     if (product && product.latitud && product.longitud) {
       const container = L.DomUtil.get('product-map');
-      if (container != null) {
-        container._leaflet_id = null;
-      }
+      if (container) container._leaflet_id = null;
 
       const map = L.map('product-map').setView([product.latitud, product.longitud], 13);
-
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        attribution: '&copy; OpenStreetMap contributors',
       }).addTo(map);
 
-      // Crear icono personalizado con la imagen del producto
-      const icon = L.icon({
-        iconUrl: product.imagen_url,
-        iconSize: [50, 50],
-        iconAnchor: [25, 50],
-        popupAnchor: [0, -40],
-      });
-
-      L.marker([product.latitud, product.longitud], { icon })
-        .addTo(map)
-        .bindPopup(`
-          <div style="text-align: center;">
-            <img src="${product.imagen_url}" alt="${product.nombre}" style="width: 100px; height: auto;" />
-            <strong>${product.nombre}</strong>
-          </div>
-        `)
-        .openPopup();
+      const marker = L.marker([product.latitud, product.longitud]).addTo(map);
+      marker.bindPopup(`<b>${product.nombre}</b><br>${product.descripcion}`).openPopup();
     }
   }, [product]);
 
-  if (loading) {
-    return (
-      <div className="container mt-5 text-center">
-        <div className="alert alert-info">Cargando información del producto...</div>
-      </div>
-    );
-  }
-
-  if (!product) {
-    return (
-      <div className="container mt-5 text-center">
-        <div className="alert alert-danger">No se encontró el producto.</div>
-      </div>
-    );
-  }
+  if (loading) return <div>Cargando información del producto...</div>;
+  if (!product) return <div>Producto no encontrado.</div>;
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center">{product.nombre}</h2>
+      <h1 className="text-center">{product.nombre}</h1>
       <div className="row mt-4">
         <div className="col-md-6">
-          <img
-            src={product.imagen_url}
-            alt={product.nombre}
-            className="img-fluid rounded shadow"
-          />
+          <img src={product.imagen_url} alt={product.nombre} className="img-fluid rounded shadow" />
         </div>
         <div className="col-md-6">
           <h4>Descripción</h4>
