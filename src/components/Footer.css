@@ -1,23 +1,55 @@
 .footer-container {
-    background: linear-gradient(90deg, #007bff, #0056b3);
-    color: #fff;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    margin-top: auto;
+  background-color: #003399;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+  background-color: #003399;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer-content p {
+  margin: 5px 0;
+  line-height: 1.6;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.footer-content a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-content a:hover {
+  color: white;
+  text-decoration: underline;
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .footer-content p {
-    margin: 0.5rem 0;
-    font-size: 0.95rem;
+  to {
+    opacity: 1;
   }
-  
-  .footer-content a {
-    color: #ffc107;
-    text-decoration: none;
-  }
-  
-  .footer-content a:hover {
-    color: #fff;
-    text-decoration: underline;
-  }
-  
+}

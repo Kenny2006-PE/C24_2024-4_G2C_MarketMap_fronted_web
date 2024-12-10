@@ -58,7 +58,7 @@ const Map = () => {
     return () => map.remove();
   }, [productos]);
 
-  return <div id="map" style={{ height: "500px", width: "100%" }}></div>;
+  return <div id="map"></div>;
 };
 
 export default Map;

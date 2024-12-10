@@ -1,62 +1,59 @@
 .container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    font-family: 'Arial Black', sans-serif;
-    color: #0056b3;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  label {
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .form-control {
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .form-control:focus {
-    border-color: #0056b3;
-    box-shadow: 0 0 5px rgba(0, 86, 179, 0.2);
-  }
-  
-  button {
-    background-color: #0056b3;
-    color: #fff;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-    display: block;
-    margin: 0 auto;
-  }
-  
-  button:hover {
-    background-color: #004494;
-    cursor: pointer;
-  }
-  
-  img {
-    display: block;
-    margin: 10px auto;
-    border-radius: 10px;
-    max-width: 200px;
-    height: auto;
-  }
-  
-  textarea {
-    resize: none;
-  }
-  
+  max-width: 800px;
+  margin: auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #003399;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.form-control:focus {
+  border-color: #003399;
+  box-shadow: 0px 0px 5px rgba(0, 51, 153, 0.5);
+}
+
+.select {
+  padding: 10px;
+}
+
+.btn {
+  background-color: #003399;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #002277;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-fluid {
+  margin-top: 20px;
+  max-width: 200px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
